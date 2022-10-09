@@ -55,7 +55,8 @@ body {
     margin: 30px auto;
 }
 
-#score {
+
+span #correct {
     color: green;
     font-weight: bold;
 }
