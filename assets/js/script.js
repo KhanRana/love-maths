@@ -17,8 +17,8 @@ document.addEventListener("DOMContentLoaded", function () {
  * the function to generate to random numbers for the game
  */
 function runGame(gameType) {
-    num1 = Math.floor(Math.random() * 25 + 1);
-    num2 = Math.floor(Math.random() * 25 + 1);
+    let num1 = Math.floor(Math.random() * 25 + 1);
+    let num2 = Math.floor(Math.random() * 25 + 1);
 
     if (gameType === "addition"){
         displayAdditionQuestion(num1, num2);
@@ -33,7 +33,22 @@ function checkAnswer() {
 
 }
 
+/**
+ * get the right values of operands and operator
+ * from the document and calculate the correct answer
+ */
 function calculateCorrectAnswer() {
+    let operand1 = parseInt(document.getElementById("operand1").innerText);
+    let operand2 = parseInt(document.getElementById("operand2").innerText);
+    let operator = document.getElementById("operator").innerText;
+
+    if(operator === '+'){
+        return [operand1 + operand2 , "addition"];
+    }
+    else {
+        alert(`Unimplemented operator ${operator}`);
+        throw(`Unimplemented operator ${operator}. Aborting!`)
+    }
 
 }
 
