@@ -22,12 +22,25 @@ function runGame(gameType) {
 
     if (gameType === "addition"){
         displayAdditionQuestion(num1, num2);
-    } else {
+    } 
+    else if (gameType === "subtract"){
+        displaySubtractQuestion(num1, num2);
+    }
+    else if (gameType === "multiply"){
+        displayMultiplyQuestion(num1, num2);
+    }
+    else if (gameType === "divide"){
+        displayDivisionQuestion(num1, num2);
+    }
+    else {
         alert(`Unknown game type ${gameType}`);
         throw(`Unknown game type ${gameType}. Aborting!`);
     }
 }
 
+/**
+ * checking user's answer and displaying correct answer
+ */
 function checkAnswer() {
     let userAnswer = parseInt(document.getElementById("answer-box").value);
     let calculateAnswer = calculateCorrectAnswer();
@@ -55,6 +68,15 @@ function calculateCorrectAnswer() {
 
     if(operator === '+'){
         return [operand1 + operand2 , "addition"];
+    }
+    else if(operator === '-'){
+        return [operand1 - operand2 , "subtract"];
+    }
+    else if(operator === '*'){
+        return [operand1 * operand2 , "multiply"];
+    }
+    else if(operator === '/'){
+        return [(operand1 / operand2).toFixed(0), "divide"];
     }
     else {
         alert(`Unimplemented operator ${operator}`);
@@ -89,10 +111,38 @@ function displayAdditionQuestion(operand1, operand2) {
 
 }
 
-function displaySubtractQuestion() {
+/**
+ * display subtraction
+ */
+function displaySubtractQuestion(operand1, operand2) {
+    if (operand2 > operand1){
+        let temp = operand1;
+        operand1 = operand2;
+        operand2 = temp;
+    }
+    document.getElementById("operand1").textContent = operand1;
+    document.getElementById("operand2").textContent = operand2;
+    document.getElementById("operator").textContent = '-';
+    
+}
+
+/**
+ * display multiplication
+ */
+function displayMultiplyQuestion(operand1, operand2) {
+    document.getElementById("operand1").textContent = operand1;
+    document.getElementById("operand2").textContent = operand2;
+    document.getElementById("operator").textContent = '*';
 
 }
 
-function displayMultiplyQuestion() {
+
+/**
+ * display division
+ */
+ function displayDivisionQuestion(operand1, operand2) {
+    document.getElementById("operand1").textContent = operand1;
+    document.getElementById("operand2").textContent = operand2;
+    document.getElementById("operator").textContent = '/';
 
 }
