@@ -31,11 +31,14 @@ function runGame(gameType) {
 function checkAnswer() {
     let userAnswer = parseInt(document.getElementById("answer-box").value);
     let calculateAnswer = calculateCorrectAnswer();
+    let isCorrect = userAnswer === calculateAnswer[0];
 
-    if (userAnswer === calculateAnswer[0]) {
+    if (isCorrect) {
         alert("Yaay you have got it right!!!");
+        incrementScore();
     } else {
         alert(`Oops you answered ${userAnswer}. The correct answer is ${calculateAnswer[0]}`);
+        incrementWrongAnswer();
     }
     runGame(calculateAnswer[1]);
 
@@ -59,15 +62,26 @@ function calculateCorrectAnswer() {
     }
 
 }
-
+/**
+ * increment the score(correct answers)
+ */
 function incrementScore() {
-
+    let oldScore = parseInt(document.getElementById("score").innerText);
+    document.getElementById("score").textContent = ++oldScore;
 }
 
+/**
+ * increment the wrong answers)
+ */
 function incrementWrongAnswer() {
+    let newScore = parseInt(document.getElementById("incorrect").innerText);
+    document.getElementById("incorrect").textContent = ++newScore;
 
 }
 
+/**
+ * running addition operations
+ */
 function displayAdditionQuestion(operand1, operand2) {
     document.getElementById("operand1").textContent = operand1;
     document.getElementById("operand2").textContent = operand2;

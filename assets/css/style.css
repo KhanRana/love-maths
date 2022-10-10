@@ -56,7 +56,7 @@ body {
 }
 
 
-span #correct {
+#score {
     color: green;
     font-weight: bold;
 }
