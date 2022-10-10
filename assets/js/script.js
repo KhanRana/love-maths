@@ -13,9 +13,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 })
-
+/**
+ * the function to generate to random numbers for the game
+ */
 function runGame() {
-
+    num1 = Math.floor(Math.random() * 25 + 1);
+    num2 = Math.floor(Math.random() * 25 + 1);
 
 }
 
