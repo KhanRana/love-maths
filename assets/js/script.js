@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
  * the function to generate to random numbers for the game
  */
 function runGame(gameType) {
+    document.getElementById("answer-box").value = "";
     let num1 = Math.floor(Math.random() * 25 + 1);
     let num2 = Math.floor(Math.random() * 25 + 1);
 
