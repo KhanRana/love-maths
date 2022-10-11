@@ -11,31 +11,39 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         })
     }
+    document.getElementById("answer-box").addEventListener("keydown", function(event){
+        if(event.key === "Enter"){
+            checkAnswer();
+        }
+    })
+
     runGame("addition");
 })
 /**
  * the function to generate to random numbers for the game
  */
-function runGame(gameType) {
+function runGame(operation) {
     document.getElementById("answer-box").value = "";
+    document.getElementById("answer-box").focus();
+    
     let num1 = Math.floor(Math.random() * 25 + 1);
     let num2 = Math.floor(Math.random() * 25 + 1);
 
-    if (gameType === "addition"){
+    if (operation === "addition"){
         displayAdditionQuestion(num1, num2);
     } 
-    else if (gameType === "subtract"){
+    else if (operation === "subtract"){
         displaySubtractQuestion(num1, num2);
     }
-    else if (gameType === "multiply"){
+    else if (operation === "multiply"){
         displayMultiplyQuestion(num1, num2);
     }
-    else if (gameType === "divide"){
+    else if (operation === "divide"){
         displayDivisionQuestion(num1, num2);
     }
     else {
-        alert(`Unknown game type ${gameType}`);
-        throw(`Unknown game type ${gameType}. Aborting!`);
+        alert(`Unknown game type ${operation}`);
+        throw(`Unknown game type ${operation}. Aborting!`);
     }
 }
 
